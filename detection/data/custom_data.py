@@ -33,8 +33,8 @@ class Customdata(data.Dataset):
                     ymin=min(y1,y2,y3,y4)
                     xmax=max(x1,x2,x3,x4)
                     ymax=max(y1,y2,y3,y4)
-                    labels.append([xmin,ymin,xmax,ymax,x1,y1,x2,y2,x3,y3,x4,y4])
-            return labels # xmin ymin xmax ymax : bounding box , (x1,y1) (x2,y2) (x3,y3) (x4,y4)  : top left,top right,bottom right , bottom left
+                    labels.append([xmin, ymin, xmax, ymax, x1, y1, x2, y2, x3, y3, x4, y4])
+            return labels # xmin ymin xmax ymax: bounding box; (x1,y1) (x2,y2) (x3,y3) (x4,y4): top left, top right, bottom right, bottom left
         except:
             self.err.write(path_annotation+"\n")
             return []
@@ -63,13 +63,11 @@ class Customdata(data.Dataset):
 
             annotation[0, 8] = (label[4]+label[8])/2  # x center
             annotation[0, 9] =  (label[5]+label[9])/2 # y_center
-
             
             annotation[0, 10] = label[8]  # x3
             annotation[0, 11] = label[9]   # y3
             annotation[0, 12] = label[10]  # x4
             annotation[0, 13] = label[11]  # y4
-
             
             if (annotation[0, 4]<0):
                 annotation[0, 14] = 1
